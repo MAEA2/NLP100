@@ -26,30 +26,31 @@ def tail_out():
         print(l)
 
 #16
-f=codecs.open("hightemp.txt",encoding="utf-8")
+args = sys.argv
+f=codecs.open(args[1],encoding="utf-8")
 lines=[]
 line=f.readline()
 l=1
-N=5
+N=args[2]
 num=0
 while line:
     line=f.readline()
     if l>N:
         num=num+1
-        g=codecs.open("hightemp0%s.txt" % num,"w",encoding="utf-8")
+        g=codecs.open(args[3]+"_%s.txt" % num,"w",encoding="utf-8")
         g.close()
         for l in lines:
-            g=codecs.open("hightemp0%s.txt" % num,"a",encoding="utf-8")
+            g=codecs.open(args[3]+"_%s.txt" % num,"a",encoding="utf-8")
             g.write(l)
             g.close()
         lines=[]
         l=1
     elif line==None:
         num=num+1
-        g=codecs.open("hightemp0%s.txt" % num,"w",encoding="utf-8")
+        g=codecs.open(args[3]+"_%s.txt" % num,"w",encoding="utf-8")
         g.close()
         for l in lines:
-            g=codecs.open("hightemp0%s.txt" % num,"a",encoding="utf-8")
+            g=codecs.open(args[3]+"_%s.txt" % num,"a",encoding="utf-8")
             g.write(l)
             g.close()
         lines=[]
